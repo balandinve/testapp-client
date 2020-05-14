@@ -1,0 +1,29 @@
+<h2>Products</h2>
+<input type="text" (input)="onKeyup($event)" >
+<ng-container *ngIf="products && products.length">
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>id</th>
+      <th>title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of products; let idx = index">
+      <td>{{idx + 1}}</td>
+      <td>{{p.id}}</td>
+      <td>{{p.title}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="3">
+        <button class="btn btn-link" *ngFor="let p of pages; let idx = index" (click)="setPage(idx + 1)"><span
+          [style.font-weight]="page === idx + 1 ? 'bold' : 'normal'">{{idx + 1}}</span></button>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</ng-container>
